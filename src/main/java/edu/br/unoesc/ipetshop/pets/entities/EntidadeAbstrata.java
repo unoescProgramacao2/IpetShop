@@ -1,4 +1,4 @@
-package edu.br.unoesc.app.produtos.entities;
+package edu.br.unoesc.ipetshop.pets.entities;
 
 import org.hibernate.type.LocalDateTimeType;
 import org.springframework.data.annotation.CreatedDate;

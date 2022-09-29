@@ -1,7 +1,8 @@
-package edu.br.unoesc.app.produtos.dtos;
+package edu.br.unoesc.ipetshop.pets.dtos;
 
-import edu.br.unoesc.app.produtos.entities.Categoria;
-import edu.br.unoesc.app.produtos.entities.Produto;
+import edu.br.unoesc.ipetshop.pets.entities.Categoria;
+
+import java.util.List;
 
 public class CategoriaDTO {
 

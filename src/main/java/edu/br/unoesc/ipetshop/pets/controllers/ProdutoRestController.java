@@ -1,8 +1,7 @@
-package edu.br.unoesc.app.produtos.controllers;
+package edu.br.unoesc.ipetshop.pets.controllers;
 
-import edu.br.unoesc.app.produtos.dtos.ProdutoDTO;
-import edu.br.unoesc.app.produtos.entities.Produto;
-import edu.br.unoesc.app.produtos.services.ProdutoService;
+import edu.br.unoesc.ipetshop.pets.dtos.ProdutoDTO;
+import edu.br.unoesc.ipetshop.pets.services.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,10 +1,8 @@
-package edu.br.unoesc.app.produtos.services;
+package edu.br.unoesc.ipetshop.pets.services;
 
-import edu.br.unoesc.app.produtos.dtos.CategoriaDTO;
-import edu.br.unoesc.app.produtos.dtos.ProdutoDTO;
-import edu.br.unoesc.app.produtos.entities.Categoria;
-import edu.br.unoesc.app.produtos.entities.Produto;
-import edu.br.unoesc.app.produtos.repositories.CategoriaRepository;
+import edu.br.unoesc.ipetshop.pets.dtos.CategoriaDTO;
+import edu.br.unoesc.ipetshop.pets.entities.Categoria;
+import edu.br.unoesc.ipetshop.pets.repositories.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,12 +1,8 @@
-package edu.br.unoesc.app.produtos.services;
+package edu.br.unoesc.ipetshop.pets.services;
 
-
-import edu.br.unoesc.app.produtos.dtos.ImagensDTO;
-import edu.br.unoesc.app.produtos.entities.Imagen;
-import edu.br.unoesc.app.produtos.entities.Produto;
-import edu.br.unoesc.app.produtos.repositories.ImagenRepository;
-import edu.br.unoesc.app.produtos.repositories.ProdutoRepository;
-
+import edu.br.unoesc.ipetshop.pets.dtos.ImagensDTO;
+import edu.br.unoesc.ipetshop.pets.entities.Imagen;
+import edu.br.unoesc.ipetshop.pets.repositories.ImagenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +34,7 @@ public class ImagenService {
         List<ImagensDTO> imagenDTO = new ArrayList<>();
         List<Imagen> imagens = imagenRepository.findAll();
         imagens.forEach(imagen -> {
-            ImagensDTO imagensDTO = new ImagensDTO(imagen);
+            ImagensDTO imagensDTO = new ImagensDTO();
             imagenDTO.add(imagensDTO);
         });
         return imagenDTO;
@@ -47,7 +43,7 @@ public class ImagenService {
         Imagen imagen = imagenRepository.findById(imagenId);
         if(imagen==null)
             throw new RuntimeException("MENSAGEM_PRODUTO_NAO_EXISTE");
-        ImagensDTO imagenDTO = new ImagensDTO(imagen);
+        ImagensDTO imagenDTO = new ImagensDTO();
         return imagenDTO;
     }
 

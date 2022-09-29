@@ -1,10 +1,12 @@
-package edu.br.unoesc.app.produtos.services;
+package edu.br.unoesc.ipetshop.pets.services;
 
-import edu.br.unoesc.app.produtos.dtos.ProdutoDTO;
-import edu.br.unoesc.app.produtos.entities.Produto;
-import edu.br.unoesc.app.produtos.entities.Categoria;
-import edu.br.unoesc.app.produtos.repositories.CategoriaRepository;
-import edu.br.unoesc.app.produtos.repositories.ProdutoRepository;
+
+import edu.br.unoesc.ipetshop.pets.dtos.ProdutoDTO;
+import edu.br.unoesc.ipetshop.pets.entities.Categoria;
+import edu.br.unoesc.ipetshop.pets.entities.Produto;
+import edu.br.unoesc.ipetshop.pets.repositories.CategoriaRepository;
+import edu.br.unoesc.ipetshop.pets.repositories.ProdutoRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,7 +42,7 @@ public class ProdutoService {
         List<ProdutoDTO> produtosDTO = new ArrayList<ProdutoDTO>();
         List<Produto> produtos= produtoRepository.findAll();
         produtos.forEach(produto -> {
-            ProdutoDTO produtoDTO = new ProdutoDTO(produto);
+            ProdutoDTO produtoDTO = new ProdutoDTO();
             produtosDTO.add(produtoDTO);
         });
         return produtosDTO;
@@ -50,7 +52,7 @@ public class ProdutoService {
         Produto produto = produtoRepository.findById(produtoId);
         if(produto==null)
             throw new RuntimeException(MENSAGEM_PRODUTO_NAO_EXISTE);
-        ProdutoDTO produtoDTO = new ProdutoDTO(produto);
+        ProdutoDTO produtoDTO = new ProdutoDTO();
         return produtoDTO;
     }
 

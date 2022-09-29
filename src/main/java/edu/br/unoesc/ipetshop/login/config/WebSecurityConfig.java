@@ -1,7 +1,7 @@
-package edu.br.unoesc.app.login.config;
+package edu.br.unoesc.ipetshop.login.config;
 
 
-import edu.br.unoesc.app.login.services.UserDetailsServiceImpl;
+import edu.br.unoesc.ipetshop.login.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

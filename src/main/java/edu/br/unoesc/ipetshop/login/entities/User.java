@@ -1,4 +1,4 @@
-package edu.br.unoesc.app.login.entities;
+package edu.br.unoesc.ipetshop.login.entities;
 
 import java.util.Set;
 import javax.persistence.*;

@@ -1,4 +1,4 @@
-package edu.br.ipetshop;
+package edu.br.unoesc.ipetshop;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

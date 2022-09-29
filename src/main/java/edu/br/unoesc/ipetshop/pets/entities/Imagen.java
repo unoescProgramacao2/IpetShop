@@ -1,4 +1,4 @@
-package edu.br.unoesc.app.produtos.entities;
+package edu.br.unoesc.ipetshop.pets.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;

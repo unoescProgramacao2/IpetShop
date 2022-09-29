@@ -1,7 +1,8 @@
-package edu.br.unoesc.app.produtos.repositories;
+package edu.br.unoesc.ipetshop.pets.repositories;
 
+import edu.br.unoesc.ipetshop.pets.entities.Imagen;
 import org.springframework.stereotype.Repository;
-import edu.br.unoesc.app.produtos.entities.Imagen;
+import edu.br.unoesc.ipetshop.pets.entities.Imagen;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
