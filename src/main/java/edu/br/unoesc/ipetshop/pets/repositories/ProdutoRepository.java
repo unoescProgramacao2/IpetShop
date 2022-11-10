@@ -2,6 +2,7 @@ package edu.br.unoesc.ipetshop.pets.repositories;
 
 
 import edu.br.unoesc.ipetshop.pets.entities.Produto;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,7 +11,7 @@ import java.util.Optional;
 
 
 @Repository
-public interface ProdutoRepository extends CrudRepository<Produto, String>  {
+public interface ProdutoRepository extends JpaRepository<Produto, String> {
 
     public Produto findById(Long id);
 

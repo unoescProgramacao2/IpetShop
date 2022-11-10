@@ -3,7 +3,6 @@ package edu.br.unoesc.ipetshop.pets.controllers;
 
 import edu.br.unoesc.ipetshop.pets.dtos.CategoriaDTO;
 import edu.br.unoesc.ipetshop.pets.services.CategoriaService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,17 +13,30 @@ import java.util.List;
 @RequestMapping("/api")
 public class CategoriaRestController {
 
-    @Autowired
+    final
     CategoriaService categoriaService;
 
+    public CategoriaRestController(CategoriaService categoriaService) {
+        this.categoriaService = categoriaService;
+    }
+
+    @PostMapping("/novacategoria")
+    public ResponseEntity<Object> salvarNovaCategoria(@RequestBody CategoriaDTO novaCategoriaDTO) {
+        try{
+            novaCategoriaDTO = categoriaService.salvarNovaCategoria(novaCategoriaDTO);
+            return ResponseEntity.ok(novaCategoriaDTO);
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
     @GetMapping("/categorias")
-    public ResponseEntity buscarTodasCategorias() {
+    public ResponseEntity<Object> buscarTodasCategorias() {
         List<CategoriaDTO> listaDeCategorias = categoriaService.listarTodas();
         return ResponseEntity.ok(listaDeCategorias);
     }
 
     @GetMapping("/categorias/{categoriaId}")
-    public ResponseEntity buscarCategoriaPorId(@PathVariable Long categoriaId) {
+    public ResponseEntity<Object> buscarCategoriaPorId(@PathVariable Long categoriaId) {
         try{
             CategoriaDTO categoriaDTO = categoriaService.buscarCategoriaPorId(categoriaId);
             return ResponseEntity.ok(categoriaDTO);
@@ -33,18 +45,10 @@ public class CategoriaRestController {
         }
     }
 
-    @PostMapping("/categorias")
-    public ResponseEntity salvarNovaCategoria(@RequestBody CategoriaDTO novaCategoriaDTO) {
-        try{
-            novaCategoriaDTO = categoriaService.salvarNovaCategoria(novaCategoriaDTO);
-            return ResponseEntity.ok(novaCategoriaDTO);
-        }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-        }
-    }
+
 
     @PatchMapping("/categorias")
-    public ResponseEntity atualizarCategoria(@RequestBody CategoriaDTO categoriaAtualizadaDTO) {
+    public ResponseEntity<Object> atualizarCategoria(@RequestBody CategoriaDTO categoriaAtualizadaDTO) {
         try{
             categoriaAtualizadaDTO = categoriaService.atualizarCategoria(categoriaAtualizadaDTO);
             return ResponseEntity.ok(categoriaAtualizadaDTO);
@@ -54,7 +58,7 @@ public class CategoriaRestController {
     }
 
     @DeleteMapping("/categorias/{categoriaId}")
-    public ResponseEntity deletarCategoria(@PathVariable Long categoriaId) {
+    public ResponseEntity<Object> deletarCategoria(@PathVariable Long categoriaId) {
         try{
             categoriaService.deletarCategoria(categoriaId);
             return ResponseEntity.ok("Deletado com suesso");

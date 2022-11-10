@@ -11,4 +11,6 @@ INSERT INTO  AUTHORITIES_USERS (USUARIO_ID, AUTHORITY_ID) VALUES (2,2);
 INSERT INTO  AUTHORITIES_USERS (USUARIO_ID, AUTHORITY_ID) VALUES (3,2);
 INSERT INTO  AUTHORITIES_USERS (USUARIO_ID, AUTHORITY_ID) VALUES (4,2);
 
+INSERT INTO produto (id, nome, descricao, preco, quantidade) VALUES(1,'Produto 1','Descrição do produto 1', 10.00, 10);
+
 INSERT INTO produto_categoria (id,nome,data_criacao,data_atualizacao) VALUES (1,'Eletronicos',now(),now());

@@ -3,16 +3,24 @@ package edu.br.unoesc.ipetshop.pets.entities;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name = "produto")
 public class Produto extends  EntidadeAbstrata {
 
+    @Column(nullable = false, length = 100)
     private String nome;
-
+    @Column(nullable = false, length = 100)
     private String descricao;
-
+    @Column(nullable = false, length = 3)
+    private String unidade;
+    @Column(nullable = false, length = 50)
+    private String marca;
+    @Column(nullable = false, length = 10)
     private Double valor;
+    @Column(nullable = false, length = 25)
+    private String situacao;
 
     @ManyToOne
     @JoinColumn(nullable = false, name = "categoria_id")
@@ -21,43 +29,25 @@ public class Produto extends  EntidadeAbstrata {
     @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
     private List<Imagen> imagens;
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public Double getValor() {
-        return valor;
-    }
-
-    public void setValor(Double valor) {
-        this.valor = valor;
-    }
-
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
-
+    public String getNome() {return nome;}
+    public void setNome(String nome) {this.nome = nome;}
+    public String getDescricao() {return descricao;}
+    public void setDescricao(String descricao) {this.descricao = descricao;}
+    public String getUnidade() {return unidade;}
+    public void setUnidade(String unidade) {this.unidade = unidade;}
+    public String getMarca() {return marca;}
+    public void setMarca(String marca) {this.marca = marca;}
+    public Double getValor() {return valor;}
+    public void setValor(Double valor) {this.valor = valor;}
+    public String getSituacao() {return situacao;}
+    public void setSituacao(String situacao) {this.situacao = situacao;}
+    public Categoria getCategoria() {return categoria;}
+    public void setCategoria(Categoria categoria) {this.categoria = categoria;}
     public List<Imagen> getImagens() {
         return imagens;
     }
-
     public void setImagens(List<Imagen> imagens) {
         this.imagens = imagens;
     }
+
 }
