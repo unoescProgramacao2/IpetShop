@@ -2,103 +2,79 @@ package edu.br.unoesc.ipetshop.pets.services;
 
 import edu.br.unoesc.ipetshop.pets.dtos.ImagensDTO;
 import edu.br.unoesc.ipetshop.pets.entities.Imagen;
+import edu.br.unoesc.ipetshop.pets.entities.Produto;
 import edu.br.unoesc.ipetshop.pets.repositories.ImagenRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import edu.br.unoesc.ipetshop.pets.repositories.ProdutoRepository;
+import edu.br.unoesc.ipetshop.util.Phraseology;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.time.Period.between;
 
 @Service
 public class ImagenService {
-    public static final String MENSAGEM_PRODUTO_EXISTENTE = "Esse produto ja existe na base de dados";
-
-    public static final String MENSAGEM_PRODUTO_NAO_EXISTE = "Esse produto nao existe na base de dados";
-
-    public static final String MENSAGEM_NAO_PODE_ALTERAR_PRODUTO =
-            "Não é possivel Alterar um produto que ultrapassou o prazo de alteração";
-
-    public static final String MENSAGEM_CATEGORIA_NAO_EXISTE = "Categoria não existe na base de dados";
-
-    public static final int PRAZO_EM_DIAS_PARA_ALTERACAO = 2;
-
-    @Autowired
+    final
+    ProdutoRepository produtoRepository;
+    final
     ImagenRepository imagenRepository;
 
-    public List<ImagensDTO> listarTodos() {
-        List<ImagensDTO> imagenDTO = new ArrayList<>();
-        List<Imagen> imagens = imagenRepository.findAll();
-        imagens.forEach(imagen -> {
-            ImagensDTO imagensDTO = new ImagensDTO();
-            imagenDTO.add(imagensDTO);
-        });
-        return imagenDTO;
+    public ImagenService(ImagenRepository imagenRepository, ProdutoRepository produtoRepository) {
+        this.imagenRepository = imagenRepository;
+        this.produtoRepository = produtoRepository;
     }
-    public ImagensDTO buscaImagenPorId(Long imagenId){
-        Imagen imagen = imagenRepository.findById(imagenId);
+
+    public List<ImagensDTO> listarTodasImagensPorProduto(Long produtoId) {
+        Produto produto = produtoRepository.findById(produtoId);
+        if (produto == null)
+            throw new RuntimeException(Phraseology.MENSAGEM_PRODUTO_NAO_EXISTE);
+        List<ImagensDTO> imagensDTO = new ArrayList<>();
+        for (Imagen imagen : produto.getImagens()) {
+            imagensDTO.add(new ImagensDTO(imagen));
+        }
+        return imagensDTO;
+    }
+    public ImagensDTO buscaImagenPorId(Long imagenId, Long produtoId){
+        Imagen imagen = imagenRepository.findByProdutoAndId(produtoId,imagenId);
         if(imagen==null)
-            throw new RuntimeException("MENSAGEM_PRODUTO_NAO_EXISTE");
-        ImagensDTO imagenDTO = new ImagensDTO();
-        return imagenDTO;
+            throw new RuntimeException(Phraseology.IMAGEM_NAO_EXISTE);
+        return new ImagensDTO(imagen);
     }
 
-    public ImagensDTO salvarNovoImagen(ImagensDTO imagenDTO) {
-
-        Imagen imagenQueVaiSerGravado;
-
-        if(imagenDTO.getId()!=null){
-            Imagen verificaSeExisteImagen = imagenRepository.findById(imagenDTO.getId());
-            if(verificaSeExisteImagen!=null)
-                throw new RuntimeException("MENSAGEM_PRODUTO_EXISTENTE");
-
-        }
-
-        imagenQueVaiSerGravado = new Imagen();
-
-        return this.registrarImagen(imagenQueVaiSerGravado,imagenDTO);
+    public ImagensDTO salvarNovaImagen(Long produtoId, ImagensDTO novaimagensDTO) {
+        Imagen imagem = new Imagen();
+        imagem.setNome(novaimagensDTO.getNome());
+        imagem.setUrlarquivo(novaimagensDTO.getUrlarquivo());
+        Produto produto = produtoRepository.findById(produtoId);
+        imagem.setProduto(produto);
+        imagem = imagenRepository.save(imagem);
+        novaimagensDTO.setId(imagem.getId());
+        novaimagensDTO.setProdutoId(produtoId);
+        return novaimagensDTO;
     }
 
-    public ImagensDTO atualizarImagen(ImagensDTO imagenDTO) {
-        Imagen imagenQueVaiSerGravado;
-
-        if(imagenDTO.getId()==null)
-            throw new RuntimeException("MENSAGEM_PRODUTO_NAO_EXISTE");
-
-        imagenQueVaiSerGravado = imagenRepository.findById(imagenDTO.getId());
-
-        if(imagenQueVaiSerGravado==null)
-            throw new RuntimeException("MENSAGEM_PRODUTO_NAO_EXISTE");
-
-        return this.registrarImagen(imagenQueVaiSerGravado,imagenDTO);
-    }
-
-    public void deletarImagen(Long imagenId){
-        Imagen imagenQueVaiSerDeletado = imagenRepository.findById(imagenId);
-        if(imagenQueVaiSerDeletado==null)
-            throw new RuntimeException("MENSAGEM_PRODUTO_NAO_EXISTE");
-        imagenRepository.delete(imagenQueVaiSerDeletado);
-
-    }
-
-    private ImagensDTO registrarImagen(Imagen imagenQueVaiSerGravado, ImagensDTO imagenDTO ){
+    public ImagensDTO atualizarImagen(Long produtoId, ImagensDTO imagenAtualizadaDTO) {
         try {
-            Imagen imagen = imagenRepository.findById(imagenDTO.getId());
-            if(imagen==null)
-                throw new RuntimeException("MENSAGEM_IMAGEN_NAO_EXISTE");
-
-            imagenQueVaiSerGravado.setProduto(imagen.getProduto());
+            Imagen imagen = imagenRepository.findByProdutoAndId(produtoId, imagenAtualizadaDTO.getId());
+            if (imagen == null)
+                throw new RuntimeException(Phraseology.IMAGEM_NAO_EXISTE);
+            imagen.setNome(imagenAtualizadaDTO.getNome());
+            imagen.setDataAtualizacao(LocalDateTime.now());
+            imagen.setUrlarquivo(imagenAtualizadaDTO.getUrlarquivo());
+            imagen = imagenRepository.save(imagen);
+            imagenAtualizadaDTO.setId(imagen.getId());
+            return imagenAtualizadaDTO;
+        } catch (Exception e) {
+            throw new RuntimeException(Phraseology.IMAGEM_NAO_PODE_SER_ALTERADA);
         }
-        catch (Exception e){
-            throw new RuntimeException("MENSAGEM_PRODUTO_NAO_EXISTE");
-        }
+    }
 
-        imagenQueVaiSerGravado.setUrlArquivo(imagenDTO.getUrlArquivo());
-        imagenRepository.save(imagenQueVaiSerGravado);
-        return new ImagensDTO(imagenQueVaiSerGravado);
+    public void deletarImagen(Long produtoId, Long imagenId) {
+        Imagen imagen = imagenRepository.findByProdutoAndId(produtoId, imagenId);
+        if (imagen == null)
+            throw new RuntimeException(Phraseology.IMAGEM_NAO_EXISTE);
+        imagenRepository.delete(imagen);
     }
 }

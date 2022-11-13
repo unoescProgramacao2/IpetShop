@@ -1,10 +1,16 @@
 package edu.br.unoesc.ipetshop.pets.entities;
 
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.List;
-import java.util.Optional;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "produto")
 public class Produto extends  EntidadeAbstrata {
@@ -29,18 +35,6 @@ public class Produto extends  EntidadeAbstrata {
     @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
     private List<Imagen> imagens;
 
-    public String getNome() {return nome;}
-    public void setNome(String nome) {this.nome = nome;}
-    public String getDescricao() {return descricao;}
-    public void setDescricao(String descricao) {this.descricao = descricao;}
-    public String getUnidade() {return unidade;}
-    public void setUnidade(String unidade) {this.unidade = unidade;}
-    public String getMarca() {return marca;}
-    public void setMarca(String marca) {this.marca = marca;}
-    public Double getValor() {return valor;}
-    public void setValor(Double valor) {this.valor = valor;}
-    public String getSituacao() {return situacao;}
-    public void setSituacao(String situacao) {this.situacao = situacao;}
     public Categoria getCategoria() {return categoria;}
     public void setCategoria(Categoria categoria) {this.categoria = categoria;}
     public List<Imagen> getImagens() {

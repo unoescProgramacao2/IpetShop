@@ -16,7 +16,6 @@ import java.time.LocalDateTime;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static java.time.Period.*;
 
@@ -53,7 +52,7 @@ public class ProdutoService {
         List<ProdutoDTO> produtosDTO = new ArrayList<>();
         List<Produto> produtos= produtoRepository.findAll();
         produtos.forEach(produto -> {
-            ProdutoDTO produtoDTO = new ProdutoDTO();
+            ProdutoDTO produtoDTO = new ProdutoDTO(produto);
             produtosDTO.add(produtoDTO);
         });
         return produtosDTO;
@@ -126,7 +125,6 @@ public class ProdutoService {
         }catch (Exception e) {
             throw new RuntimeException(Phraseology.MENSAGEM_CATEGORIA_NAO_EXISTE);
         }
-
         produtoQueVaiSerGravado.setNome(produtoDTO.getNome());
         produtoQueVaiSerGravado.setDescricao(produtoDTO.getDescricao());
         produtoQueVaiSerGravado.setValor(produtoDTO.getValor());

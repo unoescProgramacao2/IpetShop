@@ -15,4 +15,9 @@ public class Phraseology {
         public static final int PRAZO_EM_DIAS_PARA_ALTERACAO = 2;
 
         public static final String IMAGEM_NAO_PODE_SER_ALTERADA = "Falha ao atualizar imagem";
+        public static final String MENSAGEM_SERVICO_EXISTENTE =   "Esse serviço ja existe na base de dados";
+    public static final String MENSAGEM_PET_NAO_EXISTENTE = "Esse pet nao existe na base de dados";
+    public static String MENSAGEM_SERVICO_NAO_EXISTENTE = "Esse serviço não existe na base de dados";
+        public static String MENSAGEM_SERVICO_NAO_PODE_SER_ALTERADO = "Não é possivel Alterar um serviço que ultrapassou o prazo de alteração";
+        public static String MENSAGEM_SERVICO_NAO_PODE_SER_EXCLUIDO = "Não é possivel excluir um serviço que ultrapassou o prazo de alteração";
 }

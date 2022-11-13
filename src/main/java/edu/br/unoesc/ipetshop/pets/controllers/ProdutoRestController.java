@@ -37,13 +37,13 @@ public class ProdutoRestController {
         return ResponseEntity.ok(listaDeProdutos);
     }
 
-    @GetMapping("/produtos/{produtoId}/")
+    @GetMapping("/produtos/{produtoId}")
     public ResponseEntity<Object> buscarProdutoPorId(@PathVariable Long produtoId) {
         try {
             ProdutoDTO produtoDTO = produtoService.buscaProdutoPorId(produtoId);
             return ResponseEntity.ok(produtoDTO);
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Produto não encontrado");
         }
     }
 
