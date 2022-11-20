@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RequestMapping("/api")
+@RequestMapping("/api/produtos")
 public class ProdutoRestController {
 
     final
@@ -21,7 +21,7 @@ public class ProdutoRestController {
         this.produtoService = produtoService;
     }
 
-    @PostMapping("/produtos")
+    @PostMapping("/")
     public ResponseEntity<Object> salvarNovoProduto(@RequestBody @Valid ProdutoDTO novoProdutoDTO) {
         try {
             novoProdutoDTO = produtoService.salvarNovoProduto(novoProdutoDTO);
@@ -31,13 +31,13 @@ public class ProdutoRestController {
         }
     }
 
-    @GetMapping("/produtos")
+    @GetMapping("/")
     public ResponseEntity<Object> buscarTodosProdutos() {
         List<ProdutoDTO> listaDeProdutos = produtoService.listarTodos();
         return ResponseEntity.ok(listaDeProdutos);
     }
 
-    @GetMapping("/produtos/{produtoId}")
+    @GetMapping("/{produtoId}")
     public ResponseEntity<Object> buscarProdutoPorId(@PathVariable Long produtoId) {
         try {
             ProdutoDTO produtoDTO = produtoService.buscaProdutoPorId(produtoId);
@@ -48,7 +48,7 @@ public class ProdutoRestController {
     }
 
 
-    @PatchMapping("/produtos")
+    @PatchMapping("/")
     public ResponseEntity<Object> atualizarProduto(@RequestBody ProdutoDTO produtoAtualizadoDTO) {
         try {
             produtoAtualizadoDTO = produtoService.atualizarProduto(produtoAtualizadoDTO);
@@ -58,7 +58,7 @@ public class ProdutoRestController {
         }
     }
 
-    @DeleteMapping("/produtos/{produtoId}")
+    @DeleteMapping("/{produtoId}")
     public ResponseEntity<Object> deletarProdutoPorId(@PathVariable Long produtoId) {
         try {
             produtoService.deletarProduto(produtoId);
@@ -67,29 +67,4 @@ public class ProdutoRestController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }
-
-  //  @GetMapping("/produtos/{produtoId}/images/{imageId}")
-  //  public ResponseEntity<Object> buscarProdutoPorImageid(@PathVariable Long produtoId) {
-  //      try {
-   //         ProdutoDTO produtoDTO = produtoService.buscaProdutoPorId(produtoId);
- //           return ResponseEntity.ok(produtoDTO);
-  //      }catch (Exception e){
-  //          return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-  //      }
- //  }
-
-//    @GetMapping("/produtos/{produtoId}/images/")
-//    public ResponseEntity<Object> buscarProdutoPorImage(@PathVariable Long produtoId) {
- //       try {
- //           ProdutoDTO produtoDTO = produtoService.buscaProdutoPorId(produtoId);
- //           return ResponseEntity.ok(produtoDTO);
-  //      }catch (Exception e){
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-//        }
- //   }
-
-
-
-
-
 }
