@@ -1,5 +1,6 @@
 package edu.br.unoesc.ipetshop.pets.controllers;
 
+
 import edu.br.unoesc.ipetshop.pets.dtos.ProdutoDTO;
 import edu.br.unoesc.ipetshop.pets.services.ProdutoService;
 import org.springframework.http.HttpStatus;
@@ -35,6 +36,7 @@ public class ProdutoRestController {
     public ResponseEntity<Object> buscarTodosProdutos() {
         List<ProdutoDTO> listaDeProdutos = produtoService.listarTodos();
         return ResponseEntity.ok(listaDeProdutos);
+
     }
 
     @GetMapping("/{produtoId}")

@@ -9,9 +9,16 @@ $.ajax({
     success: function (response) {
         produto = response;
         console.log("produto", response);
+        $("#id").val(produto.id)
         $("#nome").val(produto.nome),
             $("#descricao").val(produto.descricao),
-            $("#valor").val(produto.valor)
+            $("unidade").val(produto.unidade),
+            $("#marca").val(produto.marca),
+            $("#valor").val(produto.valor),
+            $("#situacao").val(produto.situacao),
+            $("#idcategoria").val(produto.idcategoria),
+            $("#categoria").val(produto.categoria)
+
     },
     dataType: "json",
     contentType: "application/json"
@@ -22,7 +29,12 @@ const salvar = () => {
 
     produto.nome = $("#nome").val(),
         produto.descricao = $("#descricao").val(),
-        produto.valor = $("#valor").val()
+        produto.unidade = $("#unidade").val(),
+        produto.marca = $("#marca").val(),
+        produto.valor = $("#valor").val(),
+        produto.situacao = $("#situacao").val(),
+        produto.idcategoria = $("#idcategoria").val(),
+        produto.categoria = $("#categoria").val()
     console.log(produto);
     $.ajax({
         type: "PATCH",
