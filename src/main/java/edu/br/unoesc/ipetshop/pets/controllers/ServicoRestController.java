@@ -43,8 +43,16 @@ public class ServicoRestController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }
-
-    @PatchMapping("/update/{id}")
+    @PatchMapping("/")
+    public ResponseEntity<Object> atualizarServico(@RequestBody @Valid ServicoDTO servicoDTO) {
+        try {
+            servicoDTO = servicoService.atualizarServico(servicoDTO);
+            return ResponseEntity.ok(servicoDTO);
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
+    @PatchMapping("/{id}")
     public ResponseEntity<Object> atualizarServico(@RequestBody @Valid ServicoDTO servicoAtualizadoDTO, @PathVariable Long id) {
         try {
             servicoAtualizadoDTO = servicoService.atualizarServico(servicoAtualizadoDTO, id);

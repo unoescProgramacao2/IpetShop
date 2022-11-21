@@ -62,6 +62,12 @@ public class ServicoService {
         return servicoDTO;
 
     }
+    public ServicoDTO atualizarServico(ServicoDTO servicoDTO) {
+        Servico servicoQueVaiSerAtualizado = servicoRepository.findById(servicoDTO.getId());
+        if (servicoQueVaiSerAtualizado == null)
+            throw new RuntimeException(Phraseology.MENSAGEM_SERVICO_NAO_EXISTENTE);
+        return this.registrarServico(servicoQueVaiSerAtualizado, servicoDTO);
+    }
     public ServicoDTO atualizarServico(ServicoDTO servicoAtualizadoDTO, Long id) {
         Servico servicoQueVaiSerAlterado = servicoRepository.findById(id);
         if (servicoQueVaiSerAlterado == null)
@@ -84,7 +90,6 @@ public class ServicoService {
 
         Period diff = between(servico.getDataCriacao().toLocalDate(), LocalDate.now());
         return diff.getDays() > prazoEmDiasParaAlteracao;    }
-
 
 
 }

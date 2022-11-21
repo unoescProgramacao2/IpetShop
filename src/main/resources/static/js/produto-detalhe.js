@@ -1,24 +1,22 @@
 
-const produtoId = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1);
+const produtosId = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1);
 
-let produto = {};
+let produtos = {};
 
 $.ajax({
     type: "GET",
-    url: "/api/produtos/" + produtoId,
+    url: "/api/produtos/" + produtosId,
     success: function (response) {
-        produto = response;
+        produtos = response;
         console.log("produto", response);
-        $("#id").val(produto.id)
-        $("#nome").val(produto.nome),
-            $("#descricao").val(produto.descricao),
-            $("unidade").val(produto.unidade),
-            $("#marca").val(produto.marca),
-            $("#valor").val(produto.valor),
-            $("#situacao").val(produto.situacao),
-            $("#idcategoria").val(produto.idcategoria),
-            $("#categoria").val(produto.categoria)
-
+        $("#id").val(produtos.id)
+        $("#nome").val(produtos.nome),
+            $("#descricao").val(produtos.descricao),
+            $("#unidade").val(produtos.unidade),
+            $("#marca").val(produtos.marca),
+            $("#situacao").val(produtos.situacao),
+            $("#categoriaId").val(produtos.categoriaId),
+            $("#valor").val(produtos.valor)
     },
     dataType: "json",
     contentType: "application/json"
@@ -27,21 +25,22 @@ $.ajax({
 
 const salvar = () => {
 
-    produto.nome = $("#nome").val(),
-        produto.descricao = $("#descricao").val(),
-        produto.unidade = $("#unidade").val(),
-        produto.marca = $("#marca").val(),
-        produto.valor = $("#valor").val(),
-        produto.situacao = $("#situacao").val(),
-        produto.idcategoria = $("#idcategoria").val(),
-        produto.categoria = $("#categoria").val()
-    console.log(produto);
+    produtos.nome = $("#nome").val(),
+        produtos.descricao = $("#descricao").val(),
+        produtos.unidade = $("#unidade").val(),
+        produtos.marca = $("#marca").val(),
+        produtos.situacao = $("#situacao").val(),
+        produtos.categoriaId = $("#categoriaId").val(),
+        produtos.valor = $("#valor").val()
+
+    console.log(produtos);
     $.ajax({
         type: "PATCH",
         url: "/api/produtos/",
-        data: JSON.stringify(produto),
+        data: JSON.stringify(produtos),
         success: function () {
-            alert("Deu boa!");
+            alert("Atualizado com sucesso!");
+            window.location.href = "/produtos";
         },
         error: function (jqXHR, textStatus, errorThrown) {
             // log the error to the console

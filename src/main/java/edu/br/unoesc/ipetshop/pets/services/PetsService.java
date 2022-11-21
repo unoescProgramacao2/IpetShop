@@ -64,7 +64,12 @@ public class PetsService {
         petDTO.setId(petQueVaiSerGravado.getId());
         return petDTO;
     }
-
+    public PetsDTO atualizarPet(PetsDTO petAtualizadoDTO) {
+        Pets petQueVaiSerAtualizado = petsRepository.findByid(petAtualizadoDTO.getId());
+        if (petQueVaiSerAtualizado == null)
+            throw new RuntimeException(Phraseology.MENSAGEM_PET_NAO_EXISTENTE);
+        return this.registrarPet(petQueVaiSerAtualizado,petAtualizadoDTO);
+    }
     public PetsDTO atualizarPet(PetsDTO petAtualizadoDTO, Long id) {
         Pets petQueVaiSerAtualizado = petsRepository.findByid(id);
         if (petQueVaiSerAtualizado == null)
@@ -79,4 +84,5 @@ public class PetsService {
             throw new RuntimeException(Phraseology.MENSAGEM_PET_NAO_EXISTENTE);
         petsRepository.delete(petQueVaiSerDeletado);
     }
+
 }

@@ -45,6 +45,15 @@ public class PetsRestController {
         }
     }
 
+    @PatchMapping("/")
+    public ResponseEntity<Object> atualizarPet(@RequestBody PetsDTO petAtualizadoDTO) {
+        try {
+            petAtualizadoDTO = petsService.atualizarPet(petAtualizadoDTO);
+            return ResponseEntity.ok(petAtualizadoDTO);
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
     @PatchMapping("/update/{id}")
     public ResponseEntity<Object> atualizarPet(@RequestBody @Valid  PetsDTO petAtualizadoDTO, @PathVariable Long id) {
         try {
