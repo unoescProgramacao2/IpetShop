@@ -14,5 +14,7 @@ public class ServicoControler {
         return "servico/servico_detalhe_view";
     }
     @GetMapping("/ordem_servico")
-    public String ordem_servicos() { return "OrdemServico/Ordem_View";}
+    public String ordemServicos() { return "OrdemServico/Ordem_View";}
+    @GetMapping("/ordem_servico/cadastro")
+    public String cadastroOS() { return "OrdemServico/Ordem_cadastro_view";}
 }

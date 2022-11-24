@@ -13,7 +13,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "OrdemServico")
+@Table(name = "ordem_servico")
 public class OrdemServico  extends EntidadeAbstrata{
 
     @Column(nullable = false, length = 100)
@@ -24,4 +24,36 @@ public class OrdemServico  extends EntidadeAbstrata{
     private int IdServico;
     @Column(nullable = false, length = 10)
     private int IdPet;
+
+    public int getIdOrdem() {
+        return IdOrdem;
+    }
+
+    public void setIdOrdem(int idOrdem) {
+        IdOrdem = idOrdem;
+    }
+
+    public Date getDataOrdem() {
+        return DataOrdem;
+    }
+
+    public void setDataOrdem(Date dataOrdem) {
+        DataOrdem = dataOrdem;
+    }
+
+    public int getIdServico() {
+        return IdServico;
+    }
+
+    public void setIdServico(int idServico) {
+        IdServico = idServico;
+    }
+
+    public int getIdPet() {
+        return IdPet;
+    }
+
+    public void setIdPet(int idPet) {
+        IdPet = idPet;
+    }
 }

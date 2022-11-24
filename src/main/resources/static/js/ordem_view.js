@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
     let dataTable =  new simpleDatatables.DataTable(datatablesSimple,);
 
-    fetch('api/ordem_servicos/')
+    fetch('api/ordem/')
         .then((response) => response.json())
         .then((dataResponse) =>   {
 

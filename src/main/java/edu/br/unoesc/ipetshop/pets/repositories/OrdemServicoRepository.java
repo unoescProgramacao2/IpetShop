@@ -8,9 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface OrdemServicoRepository extends CrudRepository<OrdemServico, String> {
-
-    OrdemServico findById(int IdOrdem);
-
-    @NotNull List<OrdemServico> findAll();
+public interface OrdemServicoRepository extends CrudRepository<OrdemServico, Long> {
+    public List<OrdemServico> findAll();
 }
