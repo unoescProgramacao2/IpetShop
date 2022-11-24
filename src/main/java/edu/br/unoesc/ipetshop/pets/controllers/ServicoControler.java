@@ -13,4 +13,6 @@ public class ServicoControler {
     public String servicosDetalhes() {
         return "servico/servico_detalhe_view";
     }
+    @GetMapping("/ordem_servico")
+    public String ordem_servicos() { return "OrdemServico/Ordem_View";}
 }

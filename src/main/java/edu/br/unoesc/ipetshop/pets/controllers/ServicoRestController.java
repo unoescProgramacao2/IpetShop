@@ -1,6 +1,7 @@
 package edu.br.unoesc.ipetshop.pets.controllers;
 
 import edu.br.unoesc.ipetshop.pets.dtos.ServicoDTO;
+import edu.br.unoesc.ipetshop.pets.entities.OrdemServico;
 import edu.br.unoesc.ipetshop.pets.services.ServicoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
