@@ -1,11 +1,69 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-<head>
-    <title>Spring Security Example</title>
-</head>
-<body>
-<p th:text="'Hello, ' + ${name} + '!'" />
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head th:replace="/fragments/head.html"><!--chama partes padrao de um site-->
 
-<p>Click <a th:href="@{/users}">here</a> to see a greeting.</p>
+<body class="sb-nav-fixed">
+<nav th:replace="/fragments/navbar.html"></nav>
+
+<div id="layoutSidenav">
+    <div th:replace="/fragments/sidebar.html"></div>
+
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-6">
+
+                <div class="row">
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-dark text-white mb-4">
+                            <div class="card-body">Consultas</div>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU4QoggH6gqxGeUGoNigCIq9OAriXbWxtjxA&usqp=CAU"
+                                 class="card-img-top" alt="...">
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link" href="#">Agende uma consulta!</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="bg-dark text-white mb-4">
+                            <div class="card-body">Banho e Tosa</div>
+                            <img src="https://petlandbrasil.com.br/wp-content/uploads/2021/12/2111_Ofertaspadrao_Banhoetosa_Mobile.jpg"
+                                 class="card-img-top">
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link" href="#">Banho e Tosa</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="bg-dark text-white mb-4">
+                            <div class="card-body">Treinando seu pet</div>
+                            <img src="https://camarafarroupilha.rs.gov.br/wp-content/uploads/2018/09/bem-estar-animal.jpg"
+                                 class="card-img-top">
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link" href="#">Treinamento</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="bg-dark text-white mb-4">
+                            <div class="card-body">Eventos</div>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYay9vbs2TpZQX9Sz6sPm9YiPj0kIka5xlqpzfspKmgNklhsYWIrWsulZQYKOqae_-gHI&usqp=CAU"
+                                 class="card-img-top">
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link" href="#">Eventos</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer th:replace="/fragments/footer.html"></footer>
+    </div>
+</div>
+
+<script src="/js/datatables-simple-demo.js"></script>
+
+
 </body>
 </html>
