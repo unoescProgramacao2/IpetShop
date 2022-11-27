@@ -62,7 +62,8 @@ public class ProdutoService {
         Produto produto = produtoRepository.findById(produtoId);
         if(produto==null)
             throw new RuntimeException(Phraseology.MENSAGEM_PRODUTO_NAO_EXISTE);
-        return new ProdutoDTO();
+        ProdutoDTO produtoDTO = new ProdutoDTO(produto);
+        return produtoDTO;
     }
 
 

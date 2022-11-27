@@ -13,4 +13,9 @@ public class ServicoControler {
     public String servicosDetalhes() {
         return "servico/servico_detalhe_view";
     }
+
+    @GetMapping("/servicos/novo")
+    public String novoServico() {
+        return "servico/servico_novo_view";
+    }
 }

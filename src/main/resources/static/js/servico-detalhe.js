@@ -43,3 +43,26 @@ const salvar = () => {
     });
 
 }
+const salvar_novo = () => {
+
+    servico.nome = $("#nome").val(),
+        servico.descricao = $("#descricao").val(),
+        servico.valor = $("#valor").val()
+    console.log(servico);
+    $.ajax({
+        type: "POST",
+        url: "/api/servicos/newservice",
+        data: JSON.stringify(servico),
+        success: function () {
+            alert("Cadastrado com sucesso!");
+            window.location.href = "/servicos";
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            // log the error to the console
+            console.log("The following error occured: " + textStatus, errorThrown);
+        },
+        dataType: "json",
+        contentType: "application/json"
+    });
+
+}

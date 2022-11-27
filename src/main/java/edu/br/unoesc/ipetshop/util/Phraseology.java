@@ -12,7 +12,7 @@ public class Phraseology {
         public static final String MENSAGEM_CATEGORIA_NAO_EXISTE = "Categoria não existe na base de dados";
 
         public static final String IMAGEM_NAO_EXISTE = "Imagem não existe";
-        public static final int PRAZO_EM_DIAS_PARA_ALTERACAO = 2;
+        public static final int PRAZO_EM_DIAS_PARA_ALTERACAO = 100;
 
         public static final String IMAGEM_NAO_PODE_SER_ALTERADA = "Falha ao atualizar imagem";
         public static final String MENSAGEM_SERVICO_EXISTENTE =   "Esse serviço ja existe na base de dados";

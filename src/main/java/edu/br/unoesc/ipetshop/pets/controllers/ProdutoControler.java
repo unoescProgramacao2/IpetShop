@@ -15,4 +15,15 @@ public class ProdutoControler {
     public String produtosDetalhes() {
         return "produto/produto_detalhe_view";
     }
+
+    @GetMapping("/produtos/novo")
+    public String novoProduto() {
+        return "produto/produto_novo_view";
+    }
+
+    @GetMapping("/produtos/{produtoId}/delete")
+    public String deleteProduto() {
+        return "/api/produto/{produtoId}";
+    }
+
 }

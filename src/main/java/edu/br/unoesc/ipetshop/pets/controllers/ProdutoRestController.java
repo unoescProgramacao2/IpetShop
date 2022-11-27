@@ -54,11 +54,11 @@ public class ProdutoRestController {
             produtoAtualizadoDTO = produtoService.atualizarProduto(produtoAtualizadoDTO);
             return ResponseEntity.ok(produtoAtualizadoDTO);
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("data ultrapassada");
         }
     }
 
-    @DeleteMapping("/{produtoId}")
+    @DeleteMapping("/{produtoId}/delete")
     public ResponseEntity<Object> deletarProdutoPorId(@PathVariable Long produtoId) {
         try {
             produtoService.deletarProduto(produtoId);

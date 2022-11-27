@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="/fragments/head.html">
+
+<body class="sb-nav-fixed">
+
+<nav th:replace="/fragments/navbar.html"></nav>
+
+<div id="layoutSidenav">
+  <div th:replace="/fragments/sidebar.html"></div>
+
+  <div id="layoutSidenav_content">
+    <main>
+      <div class="container-fluid px-4">
+        <h2 class="mt-4">Cadastro de Produtos</h2>
+        <div class="card mb-4">
+          <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Formulário
+          </div>
+          <div class="card-body">
+
+            <form id="meuForm">
+              <div class="row mb-3">
+                <div class="col-md-6 row mb-3">
+                  <div class="form-floating mb-3 mb-md-0">
+                    <input class="form-control" id="nome" type="text" required />
+                    <label for="nome">Nome</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <input class="form-control" id="descricao" type="text" required />
+                    <label for="descricao">Descrição</label>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-floating">
+                    <select class="form-select" name="unidade" id="unidade" required>
+                      <option value=""></option>
+                      <option value="KG">KG</option>
+                      <option value="LT">LT</option>
+                      <option value="GR">GR</option>
+                      <option value="UN">UN</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-floating">
+                    <input class="form-control" id="marca" type="text" required />
+                    <label for="descricao">Marca</label>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-floating">
+                    <select class="form-select" name="situacao" id="situacao" required>
+                      <option value="ativo">Ativo</option>
+                      <option value="inativo">Inativo</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-floating">
+                    <input class="form-control" id="categoriaId" type="text" required />
+                    <label for="categoriaId">Categoria</label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-floating ">
+                <input class="form-control" id="valor" type="money" required />
+                <label for="valor">Valor</label>
+              </div>
+
+              <div class="mt-4 mb-0">
+                <div class="d-grid"><button type="button" id="salvarBtn" class="btn btn-primary"
+                                            onclick="salvar_novo()" >Salvar</button></div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </main>
+    <footer th:replace="/fragments/footer.html"></footer>
+  </div>
+</div>
+
+<script src="/js/produto-detalhe.js"></script>
+
+
+
+</body>
+</html>
