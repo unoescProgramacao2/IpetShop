@@ -6,7 +6,11 @@
 
     <form action="/api/salvaOS">
         <input type="number" name="idPet"></input>
-        <input type="number" name="idServico"></input>
+        <select class="form-control" name="idServico">
+            <option th:each="servico : ${servicos}"
+                    th:value="${servico.id}"
+                    th:text="${servico.nome}"></option>
+        </select>
         <input type="number" name="valorServico"></input>
         <input type="submit" value="save"></input>
     </form>
