@@ -3,10 +3,13 @@
 <head th:replace="/fragments/head.html">
 
 <body class="sb-nav-fixed">
-        <select class="form-control">
-            <option th:each="servico : ${servicos}"
-                    th:value="${servico.id}"
-                    th:text="${servico.nome}"></option>
-        </select>
+
+    <form action="/api/salvaOS">
+        <input type="number" name="idPet"></input>
+        <input type="number" name="idServico"></input>
+        <input type="number" name="valorServico"></input>
+        <input type="submit" value="save"></input>
+    </form>
+
 </body>
 </html>

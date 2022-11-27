@@ -14,11 +14,19 @@ import java.util.Date;
 public class OrdemServico {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
     private int IdServico;
 
     private int IdPet;
+
+    public OrdemServico(int idServico, int idPet, Double valorServico) {
+        super();
+        IdServico = idServico;
+        IdPet = idPet;
+        ValorServico = valorServico;
+    }
 
     private Double ValorServico;
 
@@ -53,4 +61,7 @@ public class OrdemServico {
     public void setIdPet(int idPet) {
         IdPet = idPet;
     }
+
+
+
 }

@@ -48,4 +48,16 @@ public class OrdemServicoController {
 
     }
 
+    @RequestMapping("/salvaOS")
+    @ResponseBody
+    public String salvarOS(OrdemServico ordemServico)
+    {
+        ordemServicoRepository.save(ordemServico);
+
+        return "Success";
+    }
+
+
+
+
 }
