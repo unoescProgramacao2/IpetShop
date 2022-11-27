@@ -1,35 +1,51 @@
 package edu.br.unoesc.ipetshop.pets.controllers;
 
+import edu.br.unoesc.ipetshop.pets.dtos.ServicoDTO;
 import edu.br.unoesc.ipetshop.pets.entities.OrdemServico;
-import edu.br.unoesc.ipetshop.pets.services.OrdemServicoService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import edu.br.unoesc.ipetshop.pets.entities.Servico;
+import edu.br.unoesc.ipetshop.pets.repositories.OrdemServicoRepository;
+import edu.br.unoesc.ipetshop.pets.services.PetsService;
+import edu.br.unoesc.ipetshop.pets.services.ServicoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
-@RestController
-@CrossOrigin(origins = "*", maxAge = 3600)
-@RequestMapping("/api/ordem")
+@Controller
+@RequestMapping("/api")
 public class OrdemServicoController {
 
-    final
-    OrdemServicoService ordemServicoService;
+    @Autowired
+    OrdemServicoRepository ordemServicoRepository;
 
-    public OrdemServicoController(OrdemServicoService ordemServicoService)
+    ServicoService servicoService;
+
+    public OrdemServicoController(ServicoService servicoService)
     {
-        this.ordemServicoService = ordemServicoService;
+        this.servicoService = servicoService;
     }
 
-    @GetMapping("/")
-    public ResponseEntity<Object> buscarTodasOrdens()
-    {
-        List<OrdemServico> finalLista = ordemServicoService.getOrdem();
-
-        return ResponseEntity.ok(finalLista);
-
+    @GetMapping("/ordem_servicos")
+    public List<OrdemServico> buscarTodasOS() {
+            return ordemServicoRepository.findAll();
     }
 
+    @GetMapping("/cadastroOS")
+    public String cadastroOS(Model servico) {
+
+        List<ServicoDTO> servicoUnico = new ArrayList<>();
+
+        servico.addAttribute("servico", servicoUnico);
+
+        List<ServicoDTO> listServicos = servicoService.listarTodos();
+
+        servico.addAttribute("servicos", listServicos);
+
+        return "OrdemServico/Ordem_cadastro_view";
+
+    }
 
 }

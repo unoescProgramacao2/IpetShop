@@ -4,41 +4,38 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Date;
 
-@Getter
-@Setter
-@NoArgsConstructor
 @Entity
-@Table(name = "ordem_servico")
-public class OrdemServico  extends EntidadeAbstrata{
+@Table(name="ordem_servico")
+public class OrdemServico {
 
-    @Column(nullable = false, length = 100)
-    private int IdOrdem;
-    @Column(nullable = false, length = 100)
-    private Date DataOrdem;
-    @Column(nullable = false, length = 10)
+    @Id
+    private Long Id;
+
     private int IdServico;
-    @Column(nullable = false, length = 10)
+
     private int IdPet;
 
-    public int getIdOrdem() {
-        return IdOrdem;
+    private Double ValorServico;
+
+    public Double getValorServico() {
+        return ValorServico;
     }
 
-    public void setIdOrdem(int idOrdem) {
-        IdOrdem = idOrdem;
+    public void setValorServico(Double valorServico) {
+        ValorServico = valorServico;
     }
 
-    public Date getDataOrdem() {
-        return DataOrdem;
+    public Long getIdOrdem() {
+        return Id;
     }
 
-    public void setDataOrdem(Date dataOrdem) {
-        DataOrdem = dataOrdem;
+    public void setIdOrdem(Long id) {
+        Id = id;
     }
 
     public int getIdServico() {
