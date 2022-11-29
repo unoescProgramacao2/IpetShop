@@ -72,7 +72,7 @@ public class OrdemServicoController {
     }
 
     @GetMapping("/salvaOS")
-    public String salvarOS(OrdemServico ordemServico)
+    public String salvarOS(@ModelAttribute("ordem") OrdemServico ordemServico)
     {
         ordemServicoRepository.save(ordemServico);
 

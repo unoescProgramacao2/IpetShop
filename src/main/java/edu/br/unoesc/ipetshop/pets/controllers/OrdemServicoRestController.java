@@ -28,8 +28,6 @@ public class OrdemServicoRestController {
 
     PetsService petsService;
 
-    public int id;
-
     public OrdemServicoRestController(ServicoService servicoService, PetsService petsService)
     {
 

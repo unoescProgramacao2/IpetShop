@@ -20,11 +20,11 @@ public class OrdemServico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    private int IdServico;
+    private String IdServico;
 
-    private int IdPet;
+    private String IdPet;
 
-    public OrdemServico(int idServico, int idPet, Double valorServico) {
+    public OrdemServico(String idServico, String idPet, Double valorServico) {
         super();
         IdServico = idServico;
         IdPet = idPet;
@@ -49,19 +49,19 @@ public class OrdemServico {
         ValorServico = valorServico;
     }
 
-    public int getIdServico() {
+    public String getIdServico() {
         return IdServico;
     }
 
-    public void setIdServico(int idServico) {
+    public void setIdServico(String idServico) {
         IdServico = idServico;
     }
 
-    public int getIdPet() {
+    public String getIdPet() {
         return IdPet;
     }
 
-    public void setIdPet(int idPet) {
+    public void setIdPet(String idPet) {
         IdPet = idPet;
     }
 
