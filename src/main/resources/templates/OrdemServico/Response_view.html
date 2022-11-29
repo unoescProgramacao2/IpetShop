@@ -5,9 +5,18 @@
 
 <body class="sb-nav-fixed">
 
-<span th:text="${ordem.idPet}"></span><br/>
-<span th:text="${ordem.idServico}"></span><br/>
-<span th:text="${ordem.valorServico}"></span><br/>
+<div style="width: 100%; display:flex; justify-content: center; align-items: center">
+
+    <div style="margin: auto">
+        <span style="padding: 10px; font-weight: bolder;font-size: 36px">Ordem Serviço gerada IpetSHOP </span>
+        <span style="padding: 10px; font-weight: bolder;font-size: 36px">Nome do Pet:</span>
+        <span style="padding: 10px; font-size: 24px" th:text="${ordem.idPet}"></span><br/>
+        <span style="padding: 10px; font-weight: bolder;font-size: 24px">Nome do servico prestado:</span>
+        <span style="padding: 10px; font-size: 24px" th:text="${ordem.idServico}"></span><br/>
+        <span style="padding: 10px; font-weight: bolder;font-size: 24px">Valor cobrado pelo servico:</span>
+        <span style="padding: 10px; font-size: 24spx" th:text="${ordem.valorServico}"></span><br/>
+    </div>
+</div>
 
 <script src="/js/ordem_view.js"></script>
 

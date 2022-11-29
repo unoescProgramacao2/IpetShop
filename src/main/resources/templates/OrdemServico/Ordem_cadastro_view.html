@@ -6,24 +6,35 @@
 
 <body class="sb-nav-fixed">
 
-<form action="/api/salvaOS" style="text-align: left;background: lightgray; font-family: Alef;box-shadow: 3px 2px 5px gray; border-radius: 15px; margin-left: 30%; margin-right: 30%; font-size: 17px; ">
-    <a style="margin-left: 10px;color: black;">Id do pet</a><br>
-    <select class="form-control" style="color: black; background: #ffffff; border-radius: 25px;border-color: black;box-shadow: 2px 1px black;min-width: 175px;font-size: 17px;margin-left: 10px" name="idPet">
-        <option th:each="pet : ${pets}"
-                th:value="${pet.nome}"
-                th:text="${pet.nome}"></option>
-    </select><br>
-    <a style="margin-left: 10px">Id do serviço</a><br>
-    <select class="form-control" style="color: black; background: #ffffff; border-radius: 25px;border-color: black;box-shadow: 2px 1px black;min-width: 175px;font-size: 17px;margin-left: 10px" name="idServico">
-        <option th:each="servico : ${servicos}"
-                th:value="${servico.nome}"
-                th:text="${servico.nome}"></option>
-    </select><br>
-    <a style="margin-left: 10px">Valor do serviço</a><br>
-    <input type="number" style="color: black; background: white; border-radius: 25px;border-color: black;box-shadow: 2px 1px black;font-size: 17px;margin-left: 10px" name="valorServico"></input><br>
-    <input type="button" style="color: white; background: darkred; border-radius: 25px;border-color: red; margin-top: 15px;font-size: 17px;margin-left: 10px;margin-bottom: 10px" value="cancel"></input>
-    <input type="submit" style="color: white; background: green; border-radius: 25px;border-color: greenyellow; margin-top: 15px;font-size: 17px;" value="save"></input>
-</form>
+<nav th:replace="/fragments/navbar.html"></nav>
+
+<div id="layoutSidenav">
+    <div th:replace="/fragments/sidebar.html"></div>
+
+    <div id="layoutSidenav_content">
+        <main style="margin-top: 40px">
+            <form action="/api/salvaOS" style="text-align: left;background: lightgray; font-family: Alef;box-shadow: 3px 2px 5px gray; border-radius: 15px; margin-left: 30%; margin-right: 30%; font-size: 17px; ">
+                <a style="margin-left: 10px;color: black;">Nome do Pet</a><br>
+                <select class="form-control" style="width: 300px; color: black; background: #ffffff; border-radius: 25px;border-color: black;box-shadow: 2px 1px black;min-width: 175px;font-size: 17px;margin-left: 10px" name="idPet">
+                    <option th:each="pet : ${pets}"
+                            th:value="${pet.nome}"
+                            th:text="${pet.nome}"></option>
+                </select><br>
+                <a style="margin-left: 10px">Serviço</a><br>
+                <select class="form-control" style="width: 300px; color: black; background: #ffffff; border-radius: 25px;border-color: black;box-shadow: 2px 1px black;min-width: 175px;font-size: 17px;margin-left: 10px" name="idServico">
+                    <option th:each="servico : ${servicos}"
+                            th:value="${servico.nome}"
+                            th:text="${servico.nome}"></option>
+                </select><br>
+                <a style="margin-left: 10px">Valor do serviço</a><br>
+                <input type="number" style="width: 300px; color: black; background: white; border-radius: 25px;border-color: black;box-shadow: 2px 1px black;font-size: 17px;margin-left: 10px" name="valorServico"></input><br>
+                <input type="button" style="color: white; background: darkred; border-radius: 25px;border-color: red; margin-top: 15px;font-size: 17px;margin-left: 10px;margin-bottom: 10px" value="cancel"></input>
+                <input type="submit" style="color: white; background: green; border-radius: 25px;border-color: greenyellow; margin-top: 15px;font-size: 17px;" value="save"></input>
+            </form>
+        </main>
+        <footer th:replace="/fragments/footer.html"></footer>
+    </div>
+</div>
 
 </body>
 </html>
