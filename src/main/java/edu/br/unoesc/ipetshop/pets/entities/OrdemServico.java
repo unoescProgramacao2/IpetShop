@@ -9,6 +9,9 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name="ordem_servico")
 public class OrdemServico {
@@ -34,16 +37,16 @@ public class OrdemServico {
         return ValorServico;
     }
 
-    public void setValorServico(Double valorServico) {
-        ValorServico = valorServico;
-    }
-
-    public Long getIdOrdem() {
+    public Long getId() {
         return Id;
     }
 
-    public void setIdOrdem(Long id) {
+    public void setId(Long id) {
         Id = id;
+    }
+
+    public void setValorServico(Double valorServico) {
+        ValorServico = valorServico;
     }
 
     public int getIdServico() {

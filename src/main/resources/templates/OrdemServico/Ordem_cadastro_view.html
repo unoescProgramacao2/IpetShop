@@ -5,13 +5,21 @@
 <body class="sb-nav-fixed">
 
     <form action="/api/salvaOS">
-        <input type="number" name="idPet"></input>
+        <select class="form-control" name="idPet">
+            <option th:each="pet : ${pets}"
+                    th:value="${pet.id}"
+                    th:text="${pet.nome}"></option>
+        </select>
         <select class="form-control" name="idServico">
             <option th:each="servico : ${servicos}"
                     th:value="${servico.id}"
                     th:text="${servico.nome}"></option>
         </select>
-        <input type="number" name="valorServico"></input>
+        <select class="form-control" name="valorServico">
+            <option th:each="servico : ${servicos}"
+                    th:value="${servico.valor}"
+                    th:text="${servico.valor}"></option>
+        </select>
         <input type="submit" value="save"></input>
     </form>
 
