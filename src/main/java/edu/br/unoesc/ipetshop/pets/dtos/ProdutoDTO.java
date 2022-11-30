@@ -23,7 +23,7 @@ public class ProdutoDTO {
     private String unidade;
     @NotBlank
     private String marca;
-    private Double valor;
+    private String valor;
     @NotBlank
     private String situacao;
     private Long categoriaId;

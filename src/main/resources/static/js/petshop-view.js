@@ -2,26 +2,23 @@ window.addEventListener('DOMContentLoaded', event => {
     // Simple-DataTables
     // https://github.com/fiduswriter/Simple-DataTables/wiki
 
-    const datatablesSimple = document.getElementById('datatablesServicos');
+    const datatablesSimple = document.getElementById('datatablesPets');
 
     let dataTable =   new simpleDatatables.DataTable(datatablesSimple,);
 
-    fetch('api/servicos/')
+    fetch('api/petshop/')
         .then((response) => response.json())
         .then((dataResponse) =>   {
 
             let headings =Object.keys(dataResponse[0]);
             headings[0]= "Código";
-            headings[1]= "Serviço";
-            headings[2]= "Descrição";
-            headings[3]= "Preço";
             headings.push("Detalhes");
             headings.push("Deletar");
             console.log(headings);
             const data= dataResponse.map(obj => {
                 let arrayValues = Object.values(obj).map(val => val.toString());
-                arrayValues[4]= "<a href='/servicos/"  + arrayValues[0] + "'>Detalhes</a>";
-                arrayValues[5]= "<a href='#' onclick='deleteServico(" + arrayValues[0] + ")'><i class=\"fa-solid fa-trash\"></i></a> ";
+                arrayValues[6]= "<a href='/petshop/"  + arrayValues[0] + "'>Detalhes</a>";
+                arrayValues[7]= " <a href='#' onclick='delete_petshop("+arrayValues[0]+")'><i class=\"fa-solid fa-trash\"></i></a> ";
                 return arrayValues;
             });
             console.log(data);
@@ -29,11 +26,11 @@ window.addEventListener('DOMContentLoaded', event => {
         });
 });
 
-function deleteServico(id) {
-    let confirmacao = confirm("Deseja realmente deletar este serviço?");
+function delete_petshop(id) {
+    let confirmacao = confirm("Deseja realmente deletar esta PetShop?");
     if (confirmacao) {
     console.log(id);
-    fetch('api/servicos/delete/' + id, {
+    fetch('api/petshop/delete/' + id, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'

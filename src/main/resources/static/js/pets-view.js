@@ -22,18 +22,13 @@ window.addEventListener('DOMContentLoaded', event => {
             headings[8]= "Peso";
             headings[9]= "Observações";
             headings[10]= "Nascimento";
-            headings[11]= "Idade";
             headings.push("Detalhes");
             headings.push("Deletar");
             console.log(headings);
             const data= dataResponse.map(obj => {
                 let arrayValues = Object.values(obj).map(val => val.toString());
-                const data= new Date( arrayValues[10]);
-                const ano= data.getFullYear(data);
-                console.log(ano);
-                arrayValues[11]= ano;
-                arrayValues[12]= "<a href='/pets/"  + arrayValues[0] + "'>Detalhes</a>";
-                arrayValues[13]= " <a href='#' onclick='delete_pet("+arrayValues[0]+")'><i class=\"fa-solid fa-trash\"></i></a> ";
+                arrayValues[11]= "<a href='/pets/"  + arrayValues[0] + "'>Detalhes</a>";
+                arrayValues[12]= " <a href='#' onclick='delete_pet("+arrayValues[0]+")'><i class=\"fa-solid fa-trash\"></i></a> ";
                 return arrayValues;
             });
             console.log(data);

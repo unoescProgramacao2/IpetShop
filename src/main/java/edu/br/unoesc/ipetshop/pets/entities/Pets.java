@@ -33,7 +33,7 @@ public class Pets extends EntidadeAbstrata {
     @Column(nullable = false, length = 100)
     private String porte;
     @Column(nullable = false, length = 20)
-    private double peso;
+    private String peso;
     @Column(nullable = false)
     private Date Nascimento;
     @Column(nullable = false, length = 200)

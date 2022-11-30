@@ -43,6 +43,7 @@
                                             <option value="GR">GR</option>
                                             <option value="UN">UN</option>
                                         </select>
+                                        <label for="unidade">Unidade</label>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -57,17 +58,23 @@
                                             <option value="Ativo">Ativo</option>
                                             <option value="Inativo">Inativo</option>
                                         </select>
+                                        <label for="situacao">Situação</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <input class="form-control" id="categoriaId" type="text"  />
+                                        <select class="form-select" name="categoriaId" id="categoriaId">
+                                            <option value="1">Banho</option>
+                                            <option value="2">Brinquedos</option>
+                                            <option value="3">Tosa</option>
+                                            <option value="4">Ração</option>
+                                        </select>
                                         <label for="categoriaId">Categoria</label>
                                     </div>
                                 </div>
                             </div>
                                 <div class="form-floating ">
-                                    <input class="form-control" id="valor" type="number"  />
+                                    <input class="form-control" id="valor" name="valor" type="text" maxlength="8" onkeypress="formatarMoeda()"/>
                                     <label for="valor">Valor</label>
                                 </div>
 

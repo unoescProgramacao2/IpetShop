@@ -12,13 +12,17 @@ import javax.persistence.Table;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "servico")
-public class Servico  extends EntidadeAbstrata{
+@Table(name = "petshop")
+public class PetShop extends EntidadeAbstrata {
 
+    @Column(nullable = false, length = 20)
+    private String cnpj;
     @Column(nullable = false, length = 100)
-    private String nome;
+    private String razaosocial;
     @Column(nullable = false, length = 100)
-    private String descricao;
-    @Column(nullable = false, length = 10)
-    private String valor;
+    private String nomefantasia;
+    @Column(nullable = false, length = 50)
+    private String email;
+    @Column(nullable = false, length = 20)
+    private String telefone;
 }

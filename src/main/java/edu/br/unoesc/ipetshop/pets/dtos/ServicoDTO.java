@@ -21,7 +21,7 @@ public class ServicoDTO {
     @NotBlank
     private String descricao;
     @NotNull
-    private Double valor;
+    private String valor;
 
     public ServicoDTO(Servico servico) {
         super();

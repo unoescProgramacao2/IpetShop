@@ -31,7 +31,9 @@ const salvar = () => {
         produtos.situacao = $("#situacao").val(),
         produtos.categoriaId = $("#categoriaId").val(),
         produtos.valor = $("#valor").val()
-
+    if (produtos.nome === "" || produtos.descricao === "" || produtos.unidade === "" || produtos.marca === "" || produtos.situacao === "" || produtos.categoriaId === "" || produtos.valor === "") {
+        alert("Preencha todos os campos");
+    }
     console.log(produtos);
     $.ajax({
         type: "PATCH",
@@ -60,7 +62,9 @@ const salvar_novo = () => {
         produtos.situacao = $("#situacao").val(),
         produtos.categoriaId = $("#categoriaId").val(),
         produtos.valor = $("#valor").val()
-
+    if (produtos.nome === "" || produtos.descricao === "" || produtos.unidade === "" || produtos.marca === "" || produtos.situacao === "" || produtos.categoriaId === "" || produtos.valor === "") {
+        alert("Preencha todos os campos");
+    }
     console.log(produtos);
     $.ajax({
         type: "POST",
@@ -78,4 +82,20 @@ const salvar_novo = () => {
         contentType: "application/json"
     });
 
+}
+function formatarMoeda() {
+    var elemento = document.getElementById('valor');
+    var valor = elemento.value;
+
+    valor = valor + '';
+    valor = parseInt(valor.replace(/[\D]+/g, ''));
+    valor = valor + '';
+    valor = valor.replace(/([0-9]{2})$/g, ",$1");
+
+    if (valor.length > 6) {
+        valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+    }
+
+    elemento.value = valor;
+    if(valor == 'NaN') elemento.value = '';
 }

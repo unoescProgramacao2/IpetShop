@@ -39,6 +39,10 @@ const salvar = () => {
         pets.peso = $("#peso").val(),
         pets.observacao = $("#observacao").val(),
         pets.nascimento = $("#nascimento").val()
+    if (pets.nome === "" || pets.especie === "" || pets.raca === "" || pets.sexo === "" || pets.responsavel === "" || pets.cor === "" || pets.porte === "" ||
+        pets.peso === "" || pets.observacao === "" || pets.nascimento === "") {
+        alert("Preencha todos os campos!");
+    }
     console.log(pets);
     $.ajax({
         type: "PATCH",
@@ -68,10 +72,14 @@ const salvar = () => {
             pets.peso = $("#peso").val(),
             pets.observacao = $("#observacao").val(),
             pets.nascimento = $("#nascimento").val()
+        if (pets.nome === "" || pets.especie === "" || pets.raca === "" || pets.sexo === "" || pets.responsavel === "" || pets.cor === "" || pets.porte === "" ||
+            pets.peso === "" || pets.observacao === "" || pets.nascimento === "") {
+            alert("Preencha todos os campos!");
+        }
         console.log(pets);
         $.ajax({
             type: "POST",
-            url: "/api/pets/newpet",
+            url: "/api/pets/newpet/",
             data: JSON.stringify(pets),
             success: function () {
                 alert("Cadastrado com sucesso!");

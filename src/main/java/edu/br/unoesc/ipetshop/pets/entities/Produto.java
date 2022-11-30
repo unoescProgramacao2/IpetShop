@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Currency;
 import java.util.List;
 
 @Getter
@@ -23,8 +24,8 @@ public class Produto extends  EntidadeAbstrata {
     private String unidade;
     @Column(nullable = false, length = 50)
     private String marca;
-    @Column(nullable = false, length = 10)
-    private Double valor;
+    @Column(nullable = false, length = 15)
+    private String valor;
     @Column(nullable = false, length = 25)
     private String situacao;
 

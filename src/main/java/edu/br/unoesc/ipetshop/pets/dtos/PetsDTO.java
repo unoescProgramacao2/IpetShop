@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Getter
@@ -16,15 +18,25 @@ import java.util.Date;
 public class PetsDTO {
 
         private Long id;
+        @NotBlank
         private String nome;
+        @NotBlank
         private String especie;
+        @NotBlank
         private String raca;
+        @NotBlank
         private String sexo;
+        @NotBlank
         private String responsavel;
+        @NotBlank
         private String cor;
+        @NotBlank
         private String porte;
-        private double peso;
+        @NotBlank
+        private String peso;
+        @NotNull
         private Date Nascimento;
+        @NotBlank
         private String observacao;
 
         public PetsDTO(Pets pets) {
