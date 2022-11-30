@@ -5,16 +5,22 @@
 
 <body class="sb-nav-fixed">
 
-<div style="width: 100%; display:flex; justify-content: center; align-items: center">
+<div style="width: 100%; display:grid; justify-content: center; align-items: center">
 
-    <div style="margin: auto">
-        <span style="padding: 10px; font-weight: bolder;font-size: 36px">Ordem Serviço gerada IpetSHOP </span>
-        <span style="padding: 10px; font-weight: bolder;font-size: 36px">Nome do Pet:</span>
-        <span style="padding: 10px; font-size: 24px" th:text="${ordem.idPet}"></span><br/>
-        <span style="padding: 10px; font-weight: bolder;font-size: 24px">Nome do servico prestado:</span>
-        <span style="padding: 10px; font-size: 24px" th:text="${ordem.idServico}"></span><br/>
-        <span style="padding: 10px; font-weight: bolder;font-size: 24px">Valor cobrado pelo servico:</span>
-        <span style="padding: 10px; font-size: 24spx" th:text="${ordem.valorServico}"></span><br/>
+    <div>
+        <img src="../../static/assets/img/dog.png">
+    </div>
+
+    <div style="margin: auto; display: column">
+        <span style="padding: 10px; font-weight: bolder;font-size: 36px">Ordem Serviço gerada IpetSHOP </span><br/>
+        <div style="justify-content: center; align-items: center">
+            <span style="font-weight: bolder;font-size: 24px">Nome do Pet:</span>
+            <span style="font-size: 24px" th:text="${ordem.idPet}"></span><br/>
+            <span style="font-weight: bolder;font-size: 24px">Nome do servico prestado:</span>
+            <span style="font-size: 24px" th:text="${ordem.idServico}"></span><br/>
+            <span style="font-weight: bolder;font-size: 24px">Valor cobrado pelo servico:</span>
+            <span style="font-size: 24px" th:text="${ordem.valorServico}"></span><br/>
+        </div>
     </div>
 </div>
 
